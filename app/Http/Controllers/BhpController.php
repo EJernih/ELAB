@@ -83,6 +83,7 @@ class BhpController extends Controller
      */
     public function destroy(Bhp $bhp)
     {
-        //
+        $bhp->delete();
+        return redirect('/bhps')->with('message', 'BHP Berhasil Dihapus');
     }
 }

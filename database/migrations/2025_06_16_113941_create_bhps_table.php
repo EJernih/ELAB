@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('description');
             $table->integer('minimum_stock');
             $table->unsignedBigInteger('id_unit')->nullable();
+            $table->foreign('id_unit')->references('id_unit')->on('units')->onDelete('set null');
             $table->timestamps();
 
-            $table->foreign('id_unit')->references('id_unit')->on('units')->onDelete('set null');
         });
     }
 
