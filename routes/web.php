@@ -5,6 +5,8 @@ use App\Models\Unit;
 use App\Models\Prodi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BhpController;
+use App\Http\Controllers\BhpRequestController;
+use App\Http\Controllers\DetailRequestController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ProdiController;
@@ -96,4 +98,43 @@ Route::get('/dashboard', function () {return view('dashboard');});
     Route::resource('labs', LabController::class)
         ->only(['destroy'])
          ->middleware('permission:delete-lab');
+
+    // ------------------------------
+    // CRUD REQUEST
+    // ------------------------------
+    Route::resource('bhpRequests', BhpRequestController::class)
+        ->only(['create', 'store'])
+         ->middleware('permission:create-request');
+
+    Route::resource('bhpRequests', BhpRequestController::class)
+        ->only(['edit', 'update'])
+         ->middleware('permission:edit-request');
+
+    Route::resource('bhpRequests', BhpRequestController::class)
+        ->only(['index', 'show'])
+         ->middleware('permission:view-request');
+        
+    Route::resource('bhpRequests', BhpRequestController::class)
+        ->only(['destroy'])
+         ->middleware('permission:delete-request');
+    // ------------------------------
+    // CRUD REQUEST
+    // ------------------------------
+    Route::resource('detailRequests', DetailRequestController::class)
+        ->only(['create', 'store'])
+         ->middleware('permission:create-request');
+
+    Route::resource('detailRequests', DetailRequestController::class)
+        ->only(['edit', 'update'])
+         ->middleware('permission:edit-request');
+
+    Route::resource('detailRequests', DetailRequestController::class)
+        ->only(['index', 'show'])
+         ->middleware('permission:view-request');
+        
+    Route::resource('detailRequests', DetailRequestController::class)
+        ->only(['destroy'])
+         ->middleware('permission:delete-request');
+
+
     });

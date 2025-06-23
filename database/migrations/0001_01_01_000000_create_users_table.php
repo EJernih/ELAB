@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_user');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -34,6 +34,9 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+
+    // Foreign key mengarah ke kolom 'id_user' di tabel 'users'
+    $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

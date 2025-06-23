@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
+    protected $primaryKey = 'id_user';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +24,12 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    //relasi ke tabel bhp_requests
+    public function bhp_requests()
+    {
+        return $this->hasMany(BhpRequest::class, 'id_user');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

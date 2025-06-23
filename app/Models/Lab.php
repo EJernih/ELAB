@@ -27,4 +27,10 @@ class Lab extends Model
     {
         return $this->belongsToMany(Bhp::class, 'bhp_lab', 'id_lab', 'id_bhp')->withPivot('qty');
     }
+
+    //relasi ke tabel bhp_requests
+    public function bhp_requests()
+    {
+        return $this->hasMany(BhpRequest::class, 'id_lab');
+    }
 }
